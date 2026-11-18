@@ -1,0 +1,15 @@
+{
+  "name": "setget-action",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GitHub Action for SetGet: run file and text tools, share values between jobs, update README badges.",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}

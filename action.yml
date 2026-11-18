@@ -1,0 +1,67 @@
+name: SetGet
+description: Run SetGet tools on files (convert, resize, compress, OCR...), share values between jobs, and update README badges. No account.
+author: SetGet
+branding:
+  icon: box
+  color: blue
+inputs:
+  tool:
+    description: Tool to run, for example image-resize or base64. See https://setget.net/tools
+    required: false
+  input:
+    description: Tool input as a JSON object, for example {"width":320}
+    required: false
+    default: '{}'
+  files:
+    description: |
+      Files to upload and pass to the tool, one per line, as name=path (for example image=screenshot.png).
+      A line with only a path goes to the tool's first file input.
+    required: false
+  wait:
+    description: Wait for a file-tool job to finish (true) or only start it and output job-id (false).
+    required: false
+    default: 'true'
+  output-dir:
+    description: Folder to save result files into. Leave empty to only output their URLs.
+    required: false
+  set-key:
+    description: Store `value` under this key (set mode).
+    required: false
+  get-key:
+    description: Read this key into the `result` output (get mode).
+    required: false
+  value:
+    description: Value for set-key or badge-key.
+    required: false
+  ttl:
+    description: Lifetime in seconds for set-key, badge-key or uploaded files.
+    required: false
+  badge-key:
+    description: Store `value` under this public key and output a badge URL that shows it (badge mode).
+    required: false
+  badge-label:
+    description: Label shown on the left of the badge.
+    required: false
+    default: value
+  badge-color:
+    description: Badge colour, or thresholds such as 0:red,50:yellow,80:brightgreen
+    required: false
+  base-url:
+    description: SetGet server.
+    required: false
+    default: https://setget.net
+  token:
+    description: Optional key password or capability token. Pass it from a secret.
+    required: false
+outputs:
+  result:
+    description: The tool result, or the key's value, as JSON (get mode outputs the raw text).
+  files:
+    description: JSON array of result files, each {name, size, ref, url, path}.
+  job-id:
+    description: The job ID for file tools.
+  badge-url:
+    description: Badge URL (badge mode).
+runs:
+  using: node20
+  main: src/index.js
