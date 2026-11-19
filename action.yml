@@ -1,5 +1,5 @@
-name: SetGet
-description: Run SetGet tools on files (convert, resize, compress, OCR...), share values between jobs, and update README badges. No account.
+name: SetGet Agent Tools
+description: Run free SetGet file and text tools, share values between jobs and update README badges. No account.
 author: SetGet
 branding:
   icon: box
